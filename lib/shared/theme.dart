@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+double defaultMargin = 24;
+double defaultRadius = 18;
+
 Color primaryColor = Color(0xff5C40CC);
 Color blackColor = Color(0xff1F1449);
 Color whiteColor = Color(0xffFFFFFF);
@@ -36,3 +39,5 @@ FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
 FontWeight extraBold = FontWeight.w800;
 FontWeight black = FontWeight.w900;
+
+
