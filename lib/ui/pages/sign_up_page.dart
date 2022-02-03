@@ -148,7 +148,9 @@ class SignUpPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/bonus');
+            },
             child: Text(
               'Get Started',
               style: whiteTextStyle.copyWith(

@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:airplane_travel/ui/pages/get_started_pages.dart';
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
 
@@ -14,11 +12,9 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    // TODO: implement initState
     Timer(
       Duration(seconds: 3),
       () {
-        
         Navigator.pushNamed(context, '/getStarted');
       },
     );
