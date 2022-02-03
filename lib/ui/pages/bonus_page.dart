@@ -125,7 +125,9 @@ class BonusPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(defaultRadius)
             )
           ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/main');
+            },
             child: Text(
               'Stary fly Now',
               style: whiteTextStyle.copyWith(
