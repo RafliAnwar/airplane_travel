@@ -1,3 +1,4 @@
+import 'package:airplane_travel/ui/pages/home_page.dart';
 import 'package:airplane_travel/ui/widgets/custom_botnav_item.dart';
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
@@ -7,6 +8,11 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget buildContent(){
+      return HomePage();
+    }
+
     Widget customBotNav() {
       return Align(
         alignment: Alignment.bottomCenter,
@@ -50,7 +56,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: Stack(
         children: [
-          Text('MainPage'),
+          buildContent(),
           customBotNav(),
         ],
       ),
