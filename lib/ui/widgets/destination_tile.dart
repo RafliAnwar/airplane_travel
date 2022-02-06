@@ -82,7 +82,12 @@ class DestinationTile extends StatelessWidget {
                 SizedBox(
                   width: 3,
                 ),
-                Text(rating.toString())
+                Text(
+                  rating.toString(),
+                  style: blackTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                )
               ],
             )
           ],
