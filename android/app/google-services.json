@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "424323668508",
+    "project_id": "airplane-travel",
+    "storage_bucket": "airplane-travel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424323668508:android:df110c547742b7a2d81dd9",
+        "android_client_info": {
+          "package_name": "com.raflianwar.airplane_travel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424323668508-2bg2bo9l9guv5m5606v42hgrr1547nv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvVQB4saYkNYewED-_RzSLitaVdHCM6_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424323668508-2bg2bo9l9guv5m5606v42hgrr1547nv1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
