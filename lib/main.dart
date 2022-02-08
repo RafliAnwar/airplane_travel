@@ -3,6 +3,7 @@ import 'package:airplane_travel/cubit/page_cubit.dart';
 import 'package:airplane_travel/ui/pages/bonus_page.dart';
 import 'package:airplane_travel/ui/pages/get_started_pages.dart';
 import 'package:airplane_travel/ui/pages/main_page.dart';
+import 'package:airplane_travel/ui/pages/sign_in_page.dart';
 import 'package:airplane_travel/ui/pages/sign_up_page.dart';
 import 'package:airplane_travel/ui/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           '/signUp': (context) => SignUpPage(),
           '/bonus': (context) => BonusPage(),
           '/main': (context) => MainPage(),
+          '/signIn' : (context) => SignInPage(),
         },
       ),
     );
