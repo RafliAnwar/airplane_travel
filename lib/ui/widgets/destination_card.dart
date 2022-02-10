@@ -1,19 +1,14 @@
+import 'package:airplane_travel/models/destination_model.dart';
 import 'package:airplane_travel/shared/theme.dart';
 import 'package:airplane_travel/ui/pages/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String city;
-  final double rating;
+  final DestinationModel destinations;
 
-  const DestinationCard({
+  const DestinationCard(
+    this.destinations, {
     Key? key,
-    required this.imageUrl,
-    required this.city,
-    required this.name,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -46,7 +41,7 @@ class DestinationCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(defaultRadius),
                 image: DecorationImage(
-                  image: AssetImage(imageUrl),
+                  image: NetworkImage(destinations.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -76,7 +71,7 @@ class DestinationCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        rating.toString(),
+                        destinations.rating.toString(),
                         style: blackTextStyle.copyWith(
                           fontWeight: medium,
                         ),
@@ -92,7 +87,7 @@ class DestinationCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    destinations.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -103,7 +98,7 @@ class DestinationCard extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    city,
+                    destinations.city,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),
