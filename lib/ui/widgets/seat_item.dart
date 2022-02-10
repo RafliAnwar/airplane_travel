@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SeatItem extends StatelessWidget {
-  final int seatStatus;
   final String id;
+  final bool isAvailable;
 
   const SeatItem({
     Key? key,
-    required this.seatStatus,
+    this.isAvailable = true,
     required this.id,
   }) : super(key: key);
 
@@ -17,55 +17,48 @@ class SeatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSelected = context.read<SeatCubit>().isSelected(id);
+
     seatColor() {
-      switch (seatStatus) {
-        case 0:
-          return availableColor;
-        case 1:
+      if (!isAvailable) {
+        return unavailableColor;
+      } else {
+        if (isSelected) {
           return primaryColor;
-        case 2:
-          return unavailableColor;
-        default:
-          return unavailableColor;
+        } else {
+          return availableColor;
+        }
       }
     }
 
     borderColor() {
-      switch (seatStatus) {
-        case 0:
-          return primaryColor;
-        case 1:
-          return primaryColor;
-        case 2:
-          return unavailableColor;
-        default:
-          return unavailableColor;
+      if (!isAvailable) {
+        return unavailableColor;
+      } else {
+        return primaryColor;
       }
     }
 
     child() {
-      switch (seatStatus) {
-        case 0:
-          return Container();
-        case 1:
-          return Center(
-            child: Text(
-              'YOU',
-              style: whiteTextStyle.copyWith(
-                fontWeight: semiBold,
-              ),
+      if (isSelected) {
+        return Center(
+          child: Text(
+            'YOU',
+            style: whiteTextStyle.copyWith(
+              fontWeight: semiBold,
             ),
-          );
-        case 2:
-          return Container();
-        default:
-          return Container();
+          ),
+        );
+      } else {
+        SizedBox();
       }
     }
 
     return GestureDetector(
-      onTap: (){
-        context.read<SeatCubit>().selectSeat(id);
+      onTap: () {
+        if (isAvailable) {
+          context.read<SeatCubit>().selectSeat(id);
+        }
       },
       child: Container(
           width: 48,
