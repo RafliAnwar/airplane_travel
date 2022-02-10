@@ -1,12 +1,16 @@
+import 'package:airplane_travel/models/destination_model.dart';
 import 'package:airplane_travel/shared/theme.dart';
 import 'package:airplane_travel/ui/pages/choose_seat_page.dart';
 import 'package:airplane_travel/ui/widgets/custom_button.dart';
 import 'package:airplane_travel/ui/widgets/interest_item.dart';
 import 'package:airplane_travel/ui/widgets/photo_item.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  final DestinationModel destination;
+
+  const DetailPage(this.destination, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +20,8 @@ class DetailPage extends StatelessWidget {
         height: 450,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-              'assets/image_destination1.png',
+            image: NetworkImage(
+              destination.imageUrl,
             ),
             fit: BoxFit.cover,
           ),
@@ -73,7 +77,7 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lake Ciliwung',
+                          destination.name,
                           style: whiteTextStyle.copyWith(
                             fontSize: 24,
                             fontWeight: semiBold,
@@ -81,7 +85,7 @@ class DetailPage extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          'Tangerang',
+                          destination.city,
                           style: whiteTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: light,
@@ -105,7 +109,7 @@ class DetailPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        4.5.toString(),
+                        destination.rating.toString(),
                         style: whiteTextStyle.copyWith(
                           fontWeight: medium,
                         ),
@@ -221,7 +225,11 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'IDR 2.500.000',
+                          NumberFormat.currency(
+                            locale: 'id',
+                            symbol: 'IDR ',
+                            decimalDigits: 0,
+                          ).format(destination.price),
                           style: blackTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: medium,
