@@ -1,5 +1,6 @@
 import 'package:airplane_travel/cubit/seat_cubit.dart';
 import 'package:airplane_travel/models/destination_model.dart';
+import 'package:airplane_travel/models/transaction_model.dart';
 import 'package:airplane_travel/ui/pages/checkout_page.dart';
 import 'package:airplane_travel/ui/widgets/custom_button.dart';
 import 'package:airplane_travel/ui/widgets/seat_item.dart';
@@ -9,10 +10,9 @@ import 'package:intl/intl.dart';
 import '../../shared/theme.dart';
 
 class ChooseSeatPage extends StatelessWidget {
-
   final DestinationModel destination;
 
-  const ChooseSeatPage(this.destination,{Key? key}) : super(key: key);
+  const ChooseSeatPage(this.destination, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -374,10 +374,8 @@ class ChooseSeatPage extends StatelessWidget {
                       ),
                       Text(
                         NumberFormat.currency(
-                          decimalDigits: 0,
-                          locale: 'id',
-                          symbol: 'IDR '
-                        ).format(state.length * destination.price),
+                                decimalDigits: 0, locale: 'id', symbol: 'IDR ')
+                            .format(state.length * destination.price),
                         style: purpleTextStyle.copyWith(
                           fontWeight: semiBold,
                           fontSize: 16,
@@ -394,21 +392,34 @@ class ChooseSeatPage extends StatelessWidget {
     }
 
     Widget checkoutButton() {
-      return CustomButton(
-        title: 'Continue to Checkout',
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CheckoutPage(),
-            ),
-          );
-        },
-        margin: EdgeInsets.only(
-          top: 30,
-          bottom: 46,
-        ),
-      );
+      return BlocBuilder<SeatCubit, List<String>>(builder: (context, state) {
+        return CustomButton(
+          title: 'Continue to Checkout',
+          onPressed: () {
+            int price = destination.price * state.length;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CheckoutPage(
+                  TransactionModel(
+                    destination: destination,
+                    amountOfTraveler: state.length,
+                    selectedSeat: state.join(', '),
+                    insurance: true,
+                    refundable: false,
+                    price: price,
+                    grandTotal: price * (price * 0.45).toInt(),
+                  ),
+                ),
+              ),
+            );
+          },
+          margin: EdgeInsets.only(
+            top: 30,
+            bottom: 46,
+          ),
+        );
+      });
     }
 
     return Scaffold(
