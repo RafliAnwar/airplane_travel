@@ -12,7 +12,7 @@ class TransactionService {
         'amountOfTraveler': transaction.amountOfTraveler,
         'selectedSeat': transaction.selectedSeat,
         'insurance': transaction.insurance,
-        'redundable': transaction.refundable,
+        'refundable': transaction.refundable,
         'vat': transaction.vat,
         'price': transaction.price,
         'grandTotal': transaction.grandTotal,
