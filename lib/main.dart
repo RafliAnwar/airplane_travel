@@ -12,11 +12,16 @@ import 'package:airplane_travel/ui/pages/splash_page.dart';
 import 'package:airplane_travel/ui/pages/success_checkout_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await SystemChrome.setPreferredOrientations([//disable landscape orientation
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp());
 }
 
